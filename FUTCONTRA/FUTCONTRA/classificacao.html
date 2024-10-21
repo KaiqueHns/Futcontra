@@ -24,27 +24,23 @@
       </div>
 </header>
 <body>
-    <div class="container">
-        <h1>Tabela de Classificação</h1>
-        <form id="form">
-            <input type="text" id="team" placeholder="Nome do Time" required>
-            <input type="number" id="scoreA" placeholder="Gols do Time A" required>
-            <input type="number" id="scoreB" placeholder="Gols do Time B" required>
-            <button type="submit">Adicionar Resultado</button>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Pontos</th>
-                    <th>Jogos</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- As linhas da tabela serão inseridas aqui -->
-            </tbody>
-        </table>
-    </div>
+    <h1>Tabela de Classificação de Times</h1>
+    <table id="rankingTable">
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Time</th>
+                <th>Vitórias</th>
+                <th>Empates</th>
+                <th>Derrotas</th>
+                <th>Pontos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Os dados serão preenchidos aqui pelo JavaScript -->
+        </tbody>
+    </table>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -30,9 +30,9 @@
             <label for="jogador">Selecione o Jogador:</label>
             <select id="jogador" name="jogador_id" required>
                 <option value="">Selecione</option>
-                {% for jogador in jogadores %}
-                    <option value="{{ jogador.id }}">{{ jogador.nome }}</option>
-                {% endfor %}
+                <option value="kaique">Kaique</option>
+                <option value="gil">Gil</option>
+                <option value="felipe">Felipe</option>
             </select>
 
             <label for="quantidade_gols">Quantidade de Gols:</label>
@@ -44,46 +44,9 @@
 
         <h2>Jogador em Destaque</h2>
         <div id="destaque">
-            <p>Nome: <strong>{{ destaque.nome }}</strong></p>
-            <p>Gols: <strong>{{ destaque.gols }}</strong></p>
+            <p>Nome: <strong> destaque.nome </strong></p>
+            <p>Gols: <strong> destaque.gols </strong></p>
         </div>
     </div>
-
-    <script>
-        document.getElementById('golsForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(this);
-
-            fetch('/registrar_gols', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('resultado').innerText = data.mensagem;
-                this.reset();
-                atualizarDestaque();
-            })
-            .catch(error => console.error('Erro:', error));
-        });
-
-        function atualizarDestaque() {
-            const destaqueNome = document.querySelector('#destaque strong:nth-child(1)');
-            const destaqueGols = document.querySelector('#destaque strong:nth-child(2)');
-
-            fetch('/')
-                .then(response => response.text())
-                .then(html => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const novoDestaque = doc.querySelector('#destaque');
-
-                    destaqueNome.textContent = novoDestaque.querySelector('strong:nth-child(1)').textContent;
-                    destaqueGols.textContent = novoDestaque.querySelector('strong:nth-child(2)').textContent;
-                });
-        }
-    </script>
-
 </body>
 </html>
